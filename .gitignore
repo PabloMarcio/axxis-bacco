@@ -1,0 +1,6 @@
+﻿################################################################################
+# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+################################################################################
+
+/axxis.bacco.backend/axxis.bacco.domain/bin/Debug/net6.0
+/axxis.bacco.backend/axxis.bacco.domain/obj/Debug/net6.0

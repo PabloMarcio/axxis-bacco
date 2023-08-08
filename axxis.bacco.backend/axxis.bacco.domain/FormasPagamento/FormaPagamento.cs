@@ -1,6 +1,8 @@
-﻿namespace axxis.bacco.domain.FormasPagamento
+﻿using axxis.bacco.domain.Core;
+
+namespace axxis.bacco.domain.FormasPagamento
 {
-    public class FormaPagamento
+    public class FormaPagamento : BaseEntity
     {
         public long Id { get; set; }
         public string Nome { get; set; }

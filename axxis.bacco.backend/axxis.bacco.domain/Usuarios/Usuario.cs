@@ -12,18 +12,7 @@ namespace axxis.bacco.domain.Usuarios
         public string Telefone { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
-        public TipoUsuario TipoUsuario { get; set; }
-
-        public Usuario(long id)
-        {
-            Id = id;
-            Nome = string.Empty;
-            DataNascimento = DateTime.Now;
-            Cpf = string.Empty;
-            Telefone = string.Empty;
-            Email = string.Empty;
-            Senha = string.Empty;
-            TipoUsuario = TipoUsuario.Cliente;
-        }
+        public string Endereco { get; set; }
+        public TipoUsuario TipoUsuario { get; set; }        
     }
 }

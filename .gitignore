@@ -4,3 +4,6 @@
 
 /axxis.bacco.backend/axxis.bacco.domain/bin/Debug/net6.0
 /axxis.bacco.backend/axxis.bacco.domain/obj/Debug/net6.0
+/axxis.bacco.backend/axxis.bacco.backend.infra.configuration/obj
+/axxis.bacco.backend/axxis.bacco.backend.infra.data/obj
+/axxis.bacco.backend/axxis.bacco.backend.infra.extensions/obj

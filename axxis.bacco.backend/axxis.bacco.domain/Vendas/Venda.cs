@@ -1,5 +1,4 @@
-﻿using axxis.bacco.domain.Comandas;
-using axxis.bacco.domain.Core;
+﻿using axxis.bacco.domain.Core;
 using axxis.bacco.domain.FormasPagamento;
 using axxis.bacco.domain.ItensVenda;
 

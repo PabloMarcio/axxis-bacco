@@ -11,6 +11,7 @@ namespace axxis.bacco.domain.Comandas
         public long UsuarioId { get; set; }
         public StatusComanda Status { get; set; }
         public DateTime DataAbertura { get; set; }
+        public string Mesa { get; set; }
         
         public virtual Usuario Usuario { get; set; }
         public virtual ICollection<Pedido> Pedidos { get; set; }

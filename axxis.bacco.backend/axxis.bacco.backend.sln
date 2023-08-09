@@ -9,13 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{8E33D030
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{0A710858-4299-43AA-B961-DD44D07BCEE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "axxis.bacco.backend.infra.data", "axxis.bacco.backend.infra.data\axxis.bacco.backend.infra.data.csproj", "{58A6BCE6-2B4E-4A0D-953C-42BBF54A1154}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "axxis.bacco.backend.infra.data", "axxis.bacco.backend.infra.data\axxis.bacco.backend.infra.data.csproj", "{58A6BCE6-2B4E-4A0D-953C-42BBF54A1154}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCutting", "{81498087-35B0-4E64-8C1C-68C134B94981}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "axxis.bacco.backend.infra.configuration", "axxis.bacco.backend.infra.configuration\axxis.bacco.backend.infra.configuration.csproj", "{F42EC3A7-62B2-4C4A-B16B-6B02CDDC7075}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "axxis.bacco.backend.infra.configuration", "axxis.bacco.backend.infra.configuration\axxis.bacco.backend.infra.configuration.csproj", "{F42EC3A7-62B2-4C4A-B16B-6B02CDDC7075}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "axxis.bacco.backend.infra.extensions", "axxis.bacco.backend.infra.extensions\axxis.bacco.backend.infra.extensions.csproj", "{1207C370-7348-4FF7-9850-4AECB1B3D15E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "axxis.bacco.backend.infra.extensions", "axxis.bacco.backend.infra.extensions\axxis.bacco.backend.infra.extensions.csproj", "{1207C370-7348-4FF7-9850-4AECB1B3D15E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "axxis.bacco.backend.infra.di", "axxis.bacco.backend.infra.di\axxis.bacco.backend.infra.di.csproj", "{988224BC-E3E3-414F-8C43-2C7558EDC06B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{1207C370-7348-4FF7-9850-4AECB1B3D15E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1207C370-7348-4FF7-9850-4AECB1B3D15E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1207C370-7348-4FF7-9850-4AECB1B3D15E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{988224BC-E3E3-414F-8C43-2C7558EDC06B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{988224BC-E3E3-414F-8C43-2C7558EDC06B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{988224BC-E3E3-414F-8C43-2C7558EDC06B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{988224BC-E3E3-414F-8C43-2C7558EDC06B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +55,7 @@ Global
 		{81498087-35B0-4E64-8C1C-68C134B94981} = {8E33D030-6B15-4612-A4E4-7BE6EB776CBD}
 		{F42EC3A7-62B2-4C4A-B16B-6B02CDDC7075} = {81498087-35B0-4E64-8C1C-68C134B94981}
 		{1207C370-7348-4FF7-9850-4AECB1B3D15E} = {81498087-35B0-4E64-8C1C-68C134B94981}
+		{988224BC-E3E3-414F-8C43-2C7558EDC06B} = {81498087-35B0-4E64-8C1C-68C134B94981}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {70F61339-2A06-4BDC-8A03-C2D0B5B52644}

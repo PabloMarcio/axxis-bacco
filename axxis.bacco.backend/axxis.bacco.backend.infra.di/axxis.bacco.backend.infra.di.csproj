@@ -7,17 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Mappings\" />
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.9" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\axxis.bacco.backend.infra.configuration\axxis.bacco.backend.infra.configuration.csproj" />
+    <ProjectReference Include="..\axxis.bacco.backend.infra.data\axxis.bacco.backend.infra.data.csproj" />
     <ProjectReference Include="..\axxis.bacco.backend.infra.extensions\axxis.bacco.backend.infra.extensions.csproj" />
     <ProjectReference Include="..\axxis.bacco.domain\axxis.bacco.domain.csproj" />
   </ItemGroup>

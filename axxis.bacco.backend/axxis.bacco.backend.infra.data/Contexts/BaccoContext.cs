@@ -27,7 +27,7 @@ namespace axxis.bacco.backend.infra.data.Contexts
         public DbSet<ItemVenda> ItensVenda { get; set; }
         public DbSet<FormaPagamento> FormasPagamento { get; set; }
 
-        public double NextVal(string sequenceName)
+        public long NextVal(string sequenceName)
         {
             using (var cmd = this.Database.GetDbConnection().CreateCommand())
             {

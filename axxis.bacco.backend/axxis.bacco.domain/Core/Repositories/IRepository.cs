@@ -2,9 +2,9 @@
 {
     public interface IRepository<T> where T : BaseEntity
     {
-        double NewId(string generator);
+        long NewId();
         IQueryable<T> GetAll();
-        Task<T> GetById(double id);
+        Task<T> GetById(long id);
         void Add(T entity);
         void Update(T entity);
         void Delete(T entity);

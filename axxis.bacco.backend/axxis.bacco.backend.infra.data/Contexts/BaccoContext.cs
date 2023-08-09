@@ -23,9 +23,14 @@ namespace axxis.bacco.backend.infra.data.Contexts
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Comanda> Comandas { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
-        public DbSet<Venda> Venda { get; set; }
+        public DbSet<Venda> Vendas { get; set; }
         public DbSet<ItemVenda> ItensVenda { get; set; }
         public DbSet<FormaPagamento> FormasPagamento { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {            
+            optionsBuilder.UseNpgsql("User ID=postgres;Password=4xx15;Host=localhost;Port=5432;Database=bacco;Pooling=true;Connection Lifetime=0;SearchPath=bacco,public;");
+        }
 
         public long NextVal(string sequenceName)
         {
@@ -52,7 +57,7 @@ namespace axxis.bacco.backend.infra.data.Contexts
                 mask = mask.Replace("{HOST}", ConfigurationInfo.GetDatabaseHost());
                 mask = mask.Replace("{PORT}", ConfigurationInfo.GetDatabasePort());
                 mask = mask.Replace("{DATABASENAME}", ConfigurationInfo.GetDatabaseName());
-                mask = mask.Replace("{SCHEMA}", ConfigurationInfo.GetDatabaseSchema());
+                mask = mask.Replace("{SCHEMA}", ConfigurationInfo.GetDatabaseSchema());                
                 return mask;
             }
         }

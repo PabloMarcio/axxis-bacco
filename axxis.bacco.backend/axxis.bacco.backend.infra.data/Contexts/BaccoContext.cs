@@ -29,7 +29,7 @@ namespace axxis.bacco.backend.infra.data.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {            
-            optionsBuilder.UseNpgsql("User ID=postgres;Password=4xx15;Host=localhost;Port=5432;Database=bacco;Pooling=true;Connection Lifetime=0;SearchPath=bacco,public;");
+            optionsBuilder.UseNpgsql("User ID=postgres;Password=4xx15;Host=localhost;Port=5432;Database=bacco;Pooling=true;Connection Lifetime=0;SearchPath=public;");
         }
 
         public long NextVal(string sequenceName)
@@ -57,7 +57,10 @@ namespace axxis.bacco.backend.infra.data.Contexts
                 mask = mask.Replace("{HOST}", ConfigurationInfo.GetDatabaseHost());
                 mask = mask.Replace("{PORT}", ConfigurationInfo.GetDatabasePort());
                 mask = mask.Replace("{DATABASENAME}", ConfigurationInfo.GetDatabaseName());
-                mask = mask.Replace("{SCHEMA}", ConfigurationInfo.GetDatabaseSchema());                
+                mask = mask.Replace("{SCHEMA}", ConfigurationInfo.GetDatabaseSchema());
+#if DEBUG
+                mask = "User ID=postgres;Password=4xx15;Host=localhost;Port=5432;Database=bacco;Pooling=true;Connection Lifetime=0;SearchPath=public;";
+#endif
                 return mask;
             }
         }
@@ -67,7 +70,7 @@ namespace axxis.bacco.backend.infra.data.Contexts
             get
             {
 #if DEBUG
-                return "bacco";
+                return "public";
 #endif
                 return ConnectionString
                     .Split(';')

@@ -31,8 +31,9 @@ textarea:hover {
 
 input:focus,
 textarea:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+  background-color: #ffffcc; 
+  border-color: #ff1e00bd;
+  box-shadow: 0 0 5px rgb(116, 1, 1); 
 }
 
 .anchor-top-left {

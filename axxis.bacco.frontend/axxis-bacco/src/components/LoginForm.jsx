@@ -1,7 +1,9 @@
 import './LoginForm.css';
 
 function LoginForm() {
-    return (        
+    return (       
+        <>
+        <h1 className="anchor-top-left">Bem-vindo ao Bacco!</h1> 
         <div className="login-form">
             <h3 className="form-title">Login</h3> 
             
@@ -17,6 +19,7 @@ function LoginForm() {
                 </form>
             
         </div>        
+        </> 
     );
 }
 

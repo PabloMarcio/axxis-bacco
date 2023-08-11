@@ -30,6 +30,7 @@ namespace axxis.bacco.backend.infra.data.Contexts
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {            
             optionsBuilder.UseNpgsql("User ID=postgres;Password=4xx15;Host=localhost;Port=5432;Database=bacco;Pooling=true;Connection Lifetime=0;SearchPath=public;");
+            base.OnConfiguring(optionsBuilder);
         }
 
         public long NextVal(string sequenceName)

@@ -45,7 +45,7 @@ namespace axxis.bacco.backend.infra.data.Repositories.FormasPagamento
 
         public long NewId()
         {
-            return _context.NextVal("SEQ_FORMASPAGAMENTO");
+            return _context.NextVal("FormasPagamento_Id_seq");
         }
 
         public void Update(FormaPagamento entity)

@@ -17,7 +17,7 @@ namespace axxis.bacco.backend.infra.data.Mappings.Comandas
 
         public void Configure(EntityTypeBuilder<Comanda> builder)
         {
-            _modelBuilder.HasSequence<long>("SEQ_COMANDAS");            
+            _modelBuilder.HasSequence<long>("Comandas_Id_seq");            
 
             builder.ToTable("COMANDAS");
 

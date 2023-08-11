@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\axxis.bacco.application\axxis.bacco.application.csproj" />
     <ProjectReference Include="..\axxis.bacco.backend.infra.configuration\axxis.bacco.backend.infra.configuration.csproj" />
     <ProjectReference Include="..\axxis.bacco.backend.infra.data\axxis.bacco.backend.infra.data.csproj" />
     <ProjectReference Include="..\axxis.bacco.backend.infra.extensions\axxis.bacco.backend.infra.extensions.csproj" />

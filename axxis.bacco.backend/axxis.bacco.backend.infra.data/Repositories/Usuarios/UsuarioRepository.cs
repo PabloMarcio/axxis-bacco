@@ -20,12 +20,14 @@ namespace axxis.bacco.backend.infra.data.Repositories.Usuarios
         {
             _context = context;
             _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            _context.ChangeTracker.LazyLoadingEnabled = false;
             _dbSet = context.Set<Usuario>();
         }
 
         public void Add(Usuario entity)
         {
             _dbSet.Add(entity);
+            _context.SaveChangesAsync();
         }
 
         public IUsuarioQuery CreateQuery()
@@ -50,7 +52,7 @@ namespace axxis.bacco.backend.infra.data.Repositories.Usuarios
 
         public long NewId()
         {
-            return _context.NextVal("SEQ_USUARIOS");
+            return _context.NextVal("Usuarios_Id_seq");
         }
 
         public void Update(Usuario entity)

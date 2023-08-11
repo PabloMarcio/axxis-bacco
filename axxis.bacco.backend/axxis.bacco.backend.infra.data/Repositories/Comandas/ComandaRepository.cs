@@ -49,7 +49,7 @@ namespace axxis.bacco.backend.infra.data.Repositories.Comandas
 
         public long NewId()
         {
-            return _context.NextVal("SEQ_COMANDAS");
+            return _context.NextVal("Comandas_Id_seq");
         }
 
         public void Update(Comanda entity)

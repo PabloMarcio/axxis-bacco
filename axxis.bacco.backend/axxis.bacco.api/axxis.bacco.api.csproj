@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\axxis.bacco.application\axxis.bacco.application.csproj" />
+    <ProjectReference Include="..\axxis.bacco.backend.infra.configuration\axxis.bacco.backend.infra.configuration.csproj" />
+    <ProjectReference Include="..\axxis.bacco.backend.infra.data\axxis.bacco.backend.infra.data.csproj" />
+    <ProjectReference Include="..\axxis.bacco.backend.infra.di\axxis.bacco.backend.infra.di.csproj" />
+    <ProjectReference Include="..\axxis.bacco.backend.infra.extensions\axxis.bacco.backend.infra.extensions.csproj" />
+    <ProjectReference Include="..\axxis.bacco.domain\axxis.bacco.domain.csproj" />
+  </ItemGroup>
+
+</Project>

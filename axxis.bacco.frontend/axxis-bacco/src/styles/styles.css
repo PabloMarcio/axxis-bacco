@@ -45,7 +45,7 @@ body {
 
 .blur-overlay {
   position: absolute;
-  background-image: url("./barback.jpg");
+  background-image: url("../assets/images/barback.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat; 
@@ -72,4 +72,49 @@ h1 {
   align-items: center;
   justify-content: center; 
   height: 100vh; 
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 100px; 
+  font-size: 12px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:hover,
+textarea:hover {
+  border-color: #999;
+}
+
+input:focus,
+textarea:focus {
+  background-color: #ffffcc; 
+  border-color: #ff1e00bd;
+  box-shadow: 0 0 5px rgb(116, 1, 1); 
+}
+
+.anchor-top-left {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  margin-left: 15px;
 }

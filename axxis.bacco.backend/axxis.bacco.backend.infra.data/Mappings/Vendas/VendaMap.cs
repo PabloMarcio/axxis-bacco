@@ -24,7 +24,7 @@ namespace axxis.bacco.backend.infra.data.Mappings.Vendas
 
         public void Configure(EntityTypeBuilder<Venda> builder)
         {
-            _modelBuilder.HasSequence<long>("SEQ_VENDAS");
+            _modelBuilder.HasSequence<long>("Vendas_Id_seq");
 
             builder.ToTable("VENDAS");
 

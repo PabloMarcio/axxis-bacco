@@ -24,7 +24,7 @@ namespace axxis.bacco.backend.infra.data.Mappings.Pedidos
 
         public void Configure(EntityTypeBuilder<Pedido> builder)
         {
-            _modelBuilder.HasSequence<long>("SEQ_PEDIDOS");
+            _modelBuilder.HasSequence<long>("Pedidos_Id_seq");
 
             builder.ToTable("PEDIDOS");
 

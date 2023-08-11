@@ -18,7 +18,7 @@ namespace axxis.bacco.backend.infra.data.Mappings.Produtos
 
         public void Configure(EntityTypeBuilder<Produto> builder)
         {
-            _modelBuilder.HasSequence<long>("SEQ_PRODUTOS");
+            _modelBuilder.HasSequence<long>("Produtos_Id_seq");
 
             builder.ToTable("PRODUTO");            
 

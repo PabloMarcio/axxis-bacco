@@ -22,7 +22,7 @@ namespace axxis.bacco.backend.infra.data.Mappings.Usuarios
 
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
-            _modelBuilder.HasSequence<long>("SEQ_USUARIOS");
+            _modelBuilder.HasSequence<long>("Usuarios_Id_seq");
 
             builder.ToTable("USUARIOS");
 

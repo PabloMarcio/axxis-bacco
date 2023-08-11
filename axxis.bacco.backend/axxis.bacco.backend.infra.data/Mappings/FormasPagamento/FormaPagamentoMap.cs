@@ -23,7 +23,7 @@ namespace axxis.bacco.backend.infra.data.Mappings.FormasPagamento
 
         public void Configure(EntityTypeBuilder<FormaPagamento> builder)
         {
-            _modelBuilder.HasSequence<long>("SEQ_FORMASPAGAMENTO");
+            _modelBuilder.HasSequence<long>("FormasPagamento_Id_seq");
 
             builder.ToTable("FORMASPAGAMENTO");
 

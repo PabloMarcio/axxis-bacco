@@ -1,4 +1,9 @@
-﻿using axxis.bacco.backend.infra.data.Repositories.Comandas;
+﻿using axxis.bacco.application.Login.Interfaces;
+using axxis.bacco.application.Login.Services;
+using axxis.bacco.application.Usuarios.Interfaces;
+using axxis.bacco.application.Usuarios.Services;
+using axxis.bacco.backend.infra.data.Contexts;
+using axxis.bacco.backend.infra.data.Repositories.Comandas;
 using axxis.bacco.backend.infra.data.Repositories.FormasPagamento;
 using axxis.bacco.backend.infra.data.Repositories.ItensVenda;
 using axxis.bacco.backend.infra.data.Repositories.Pedidos;
@@ -12,6 +17,7 @@ using axxis.bacco.domain.Pedidos.Repositories;
 using axxis.bacco.domain.Produtos.Repositories;
 using axxis.bacco.domain.Usuarios.Repositories;
 using axxis.bacco.domain.Vendas.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace axxis.bacco.backend.infra.di
@@ -28,6 +34,13 @@ namespace axxis.bacco.backend.infra.di
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IVendaRepository, VendaRepository>();
+
+            //context
+            services.AddDbContext<BaccoContext>();
+
+            //services
+            services.AddScoped<ILoginService, LoginService>();
+            services.AddScoped<IUsuarioService, UsuarioService>();
         }
     }
 }

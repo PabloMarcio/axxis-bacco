@@ -1,0 +1,11 @@
+.appLogo {
+    background-image: url("appLogo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; 
+    width: 300px;
+    height: 128px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}

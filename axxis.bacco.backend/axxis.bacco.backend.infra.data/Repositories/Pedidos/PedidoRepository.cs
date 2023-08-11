@@ -50,7 +50,7 @@ namespace axxis.bacco.backend.infra.data.Repositories.Pedidos
 
         public long NewId()
         {
-            return _context.NextVal("SEQ_PEDIDOS");
+            return _context.NextVal("Pedidos_Id_seq");
         }
 
         public void Update(Pedido entity)

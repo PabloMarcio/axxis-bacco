@@ -19,7 +19,7 @@ namespace axxis.bacco.backend.infra.data.Mappings.ItensVenda
 
         public void Configure(EntityTypeBuilder<ItemVenda> builder)
         {
-            _modelBuilder.HasSequence<long>("SEQ_ITENSVENDA");
+            _modelBuilder.HasSequence<long>("ItensVenda_Id_seq");
                         
             builder.ToTable("ITENSVENDA");
 

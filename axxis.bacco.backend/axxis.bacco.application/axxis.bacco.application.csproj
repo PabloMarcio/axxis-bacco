@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\axxis.bacco.backend.infra.extensions\axxis.bacco.backend.infra.extensions.csproj" />
+    <ProjectReference Include="..\axxis.bacco.domain\axxis.bacco.domain.csproj" />
+  </ItemGroup>
+
+</Project>

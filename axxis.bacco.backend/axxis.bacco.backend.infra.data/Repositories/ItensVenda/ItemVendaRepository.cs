@@ -14,12 +14,14 @@ namespace axxis.bacco.backend.infra.data.Repositories.ItensVenda
         {
             _context = context;
             _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            _context.ChangeTracker.LazyLoadingEnabled = false;
             _dbSet = context.Set<ItemVenda>();
         }
 
         public void Add(ItemVenda entity)
         {
-            _dbSet.Add(entity); 
+            _dbSet.Add(entity);
+            _context.SaveChanges();
         }
 
         public IItemVendaQuery CreateQuery()
@@ -30,6 +32,7 @@ namespace axxis.bacco.backend.infra.data.Repositories.ItensVenda
         public void Delete(ItemVenda entity)
         {
             _dbSet.Remove(entity);
+            _context.SaveChanges();
         }
 
         public IQueryable<ItemVenda> GetAll()
@@ -50,6 +53,7 @@ namespace axxis.bacco.backend.infra.data.Repositories.ItensVenda
         public void Update(ItemVenda entity)
         {
             _dbSet.Update(entity);
+            _context.SaveChanges();
         }
     }
 }

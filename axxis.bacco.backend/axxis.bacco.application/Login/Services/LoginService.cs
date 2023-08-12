@@ -34,7 +34,7 @@ namespace axxis.bacco.application.Login.Services
                 defaultAdministratorLoginInfo.Id = 0;
                 defaultAdministratorLoginInfo.Name = "Administrador";
                 defaultAdministratorLoginInfo.Notifications = "";
-                defaultAdministratorLoginInfo.Role = TipoUsuario.Administrador.ToString();
+                defaultAdministratorLoginInfo.Role = TipoUsuario.Administrador;
                 defaultAdministratorLoginInfo.Token = GenerateJwtToken(new Usuario() { Email = "Admin", TipoUsuario = domain.Usuarios.Enums.TipoUsuario.Administrador });
                 return new AuthenticationResponse(true, "Login realizado", defaultAdministratorLoginInfo);
             }
@@ -59,7 +59,7 @@ namespace axxis.bacco.application.Login.Services
                 Id = usuario.Id,
                 Name = usuario.Nome,
                 Notifications = CheckNotifications(), //To Do
-                Role = usuario.TipoUsuario.ToString(),
+                Role = usuario.TipoUsuario,
                 Token = GenerateJwtToken(usuario)
             };
 

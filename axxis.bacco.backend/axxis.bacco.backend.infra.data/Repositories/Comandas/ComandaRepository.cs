@@ -19,12 +19,14 @@ namespace axxis.bacco.backend.infra.data.Repositories.Comandas
         {
             _context = context;
             _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            _context.ChangeTracker.LazyLoadingEnabled = false;
             _dbSet = context.Set<Comanda>();            
         }
 
         public void Add(Comanda entity)
         {
             _dbSet.Add(entity);
+            _context.SaveChanges();
         }
 
         public IComandaQuery CreateQuery()
@@ -35,6 +37,7 @@ namespace axxis.bacco.backend.infra.data.Repositories.Comandas
         public void Delete(Comanda entity)
         {
             _dbSet.Remove(entity);
+            _context.SaveChanges();
         }
 
         public IQueryable<Comanda> GetAll()
@@ -55,6 +58,7 @@ namespace axxis.bacco.backend.infra.data.Repositories.Comandas
         public void Update(Comanda entity)
         {
             _dbSet.Update(entity);
+            _context.SaveChanges();
         }
     }
 }

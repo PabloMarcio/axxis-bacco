@@ -26,7 +26,7 @@ namespace axxis.bacco.backend.infra.data.Mappings.Vendas
         {
             _modelBuilder.HasSequence<long>("Vendas_Id_seq");
 
-            builder.ToTable("VENDAS");
+            builder.ToTable("Vendas");
 
             builder.Property(c => c.Id)
                 .IsRequired()

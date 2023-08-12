@@ -25,7 +25,7 @@ namespace axxis.bacco.backend.infra.data.Mappings.FormasPagamento
         {
             _modelBuilder.HasSequence<long>("FormasPagamento_Id_seq");
 
-            builder.ToTable("FORMASPAGAMENTO");
+            builder.ToTable("FormasPagamento");
 
             builder.Property(c => c.Id)
                 .IsRequired()

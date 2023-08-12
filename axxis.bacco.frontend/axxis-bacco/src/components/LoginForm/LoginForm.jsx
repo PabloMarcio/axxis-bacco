@@ -1,6 +1,16 @@
+import React, { useState } from 'react';
+import SignUpForm from '../SignUpForm/SignUpForm';
 import classes from './LoginForm.module.css'
 
 function LoginForm(props) {
+    const [signUpOpen, setSignUpOpen] = useState(false);
+    const openModal = () => {
+        setSignUpOpen(true);
+      };
+    
+      const closeModal = () => {
+        setSignUpOpen(false);
+      };
     return (       
         <>        
         <div className={classes.loginForm}>
@@ -12,12 +22,13 @@ function LoginForm(props) {
                         <input type="email" id="email" name="email" required></input>
                         <label for="senha">{props.passwordFieldText}</label>
                         <input type="password" id="senha" name="senha" required></input>
-                        <button type="submit">{props.loginButtonText}</button>
-                        <button type="submit">{props.signUpButtonText}</button>                        
+                        <button type="button">{props.loginButtonText}</button>
+                        <button type="submit" onClick={openModal}>{props.signUpButtonText}</button>                        
                     </div>                    
                 </form>            
-        </div> 
+        </div>         
         {showOAuth(props.showOAuth)}               
+        <SignUpForm isOpen={signUpOpen} onClose={closeModal} />
         </> 
     );
 }

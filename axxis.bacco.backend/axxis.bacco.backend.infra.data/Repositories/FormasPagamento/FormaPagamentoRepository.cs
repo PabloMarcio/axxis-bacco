@@ -15,12 +15,14 @@ namespace axxis.bacco.backend.infra.data.Repositories.FormasPagamento
         {
             _context = context;
             _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            _context.ChangeTracker.LazyLoadingEnabled = false;
             _dbSet = context.Set<FormaPagamento>();
         }
 
         public void Add(FormaPagamento entity)
         {
             _dbSet.Add(entity);
+            _context.SaveChanges();
         }
 
         public IFormaPagamentoQuery CreateQuery()
@@ -31,6 +33,7 @@ namespace axxis.bacco.backend.infra.data.Repositories.FormasPagamento
         public void Delete(FormaPagamento entity)
         {
             _dbSet.Remove(entity);
+            _context.SaveChanges();
         }
 
         public IQueryable<FormaPagamento> GetAll()
@@ -51,6 +54,7 @@ namespace axxis.bacco.backend.infra.data.Repositories.FormasPagamento
         public void Update(FormaPagamento entity)
         {
             _dbSet.Update(entity);
+            _context.SaveChanges();
         }
     }
 }

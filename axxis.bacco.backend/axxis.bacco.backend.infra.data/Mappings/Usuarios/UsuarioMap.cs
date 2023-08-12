@@ -24,7 +24,7 @@ namespace axxis.bacco.backend.infra.data.Mappings.Usuarios
         {
             _modelBuilder.HasSequence<long>("Usuarios_Id_seq");
 
-            builder.ToTable("USUARIOS");
+            builder.ToTable("Usuarios");
 
             builder.Property(c => c.Id)
                 .IsRequired()

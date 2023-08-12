@@ -22,20 +22,32 @@ namespace axxis.bacco.backend.infra.data.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.HasSequence("Comandas_Id_seq");
+
+            modelBuilder.HasSequence("FormasPagamento_Id_seq");
+
+            modelBuilder.HasSequence("ItensVenda_Id_seq");
+
+            modelBuilder.HasSequence("Pedidos_Id_seq");
+
+            modelBuilder.HasSequence("Produtos_Id_seq");
+
+            modelBuilder.HasSequence("Usuarios_Id_seq");
+
+            modelBuilder.HasSequence("Vendas_Id_seq");
+
             modelBuilder.Entity("axxis.bacco.domain.Comandas.Comanda", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("DataAbertura")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Mesa")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
 
                     b.Property<int>("Status")
                         .HasColumnType("integer");
@@ -43,41 +55,48 @@ namespace axxis.bacco.backend.infra.data.Migrations
                     b.Property<long>("UsuarioId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_COMANDAS");
+
+                    b.HasIndex("DataAbertura")
+                        .HasDatabaseName("IDX_COMANDA_DATAABERTURA");
+
+                    b.HasIndex("Mesa")
+                        .HasDatabaseName("IDX_COMANDA_MESA");
+
+                    b.HasIndex("Status")
+                        .HasDatabaseName("IDX_COMANDA_STATUS");
 
                     b.HasIndex("UsuarioId");
 
-                    b.ToTable("Comandas");
+                    b.ToTable("Comandas", (string)null);
                 });
 
             modelBuilder.Entity("axxis.bacco.domain.FormasPagamento.FormaPagamento", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_FORMASPAGAMENTO");
 
-                    b.ToTable("FormasPagamento");
+                    b.ToTable("FormasPagamento", (string)null);
                 });
 
             modelBuilder.Entity("axxis.bacco.domain.ItensVenda.ItemVenda", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("DescricaoProduto")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(140)
+                        .HasColumnType("character varying(140)");
 
                     b.Property<int>("Quantidade")
                         .HasColumnType("integer");
@@ -91,22 +110,31 @@ namespace axxis.bacco.backend.infra.data.Migrations
                     b.Property<long>("VendaId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("Id");
+                    b.Property<long?>("VendaId1")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id")
+                        .HasName("PK_ITENSVENDA");
+
+                    b.HasIndex("DescricaoProduto")
+                        .HasDatabaseName("IDX_ITENSVENDA_DESCRICAO");
 
                     b.HasIndex("VendaId");
 
-                    b.ToTable("ItensVenda");
+                    b.HasIndex("VendaId1");
+
+                    b.ToTable("ItensVenda", (string)null);
                 });
 
             modelBuilder.Entity("axxis.bacco.domain.Pedidos.Pedido", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
                     b.Property<long>("ComandaId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ComandaId1")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("HoraPedido")
@@ -121,34 +149,35 @@ namespace axxis.bacco.backend.infra.data.Migrations
                     b.Property<double>("ValorVenda")
                         .HasColumnType("double precision");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_PEDIDOS");
 
                     b.HasIndex("ComandaId");
 
-                    b.HasIndex("ProdutoId");
+                    b.HasIndex("ComandaId1");
 
-                    b.ToTable("Pedidos");
+                    b.ToTable("Pedidos", (string)null);
                 });
 
             modelBuilder.Entity("axxis.bacco.domain.Produtos.Produto", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Base64Image")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(614400)
+                        .HasColumnType("character varying(614400)");
 
                     b.Property<string>("DescricaoCurta")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(140)
+                        .HasColumnType("character varying(140)");
 
                     b.Property<string>("DescricaoLonga")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(2000)
+                        .HasColumnType("character varying(2000)");
 
                     b.Property<int>("TipoPedido")
                         .HasColumnType("integer");
@@ -156,77 +185,92 @@ namespace axxis.bacco.backend.infra.data.Migrations
                     b.Property<double>("ValorUnitario")
                         .HasColumnType("double precision");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_PRODUTOS");
 
-                    b.ToTable("Produtos");
+                    b.HasIndex("DescricaoCurta")
+                        .HasDatabaseName("IDX_PRODUTO_DESCRICAO");
+
+                    b.HasIndex("DescricaoLonga")
+                        .HasDatabaseName("IDX_PRODUTO_DESCL");
+
+                    b.HasIndex("TipoPedido")
+                        .HasDatabaseName("IDX_PRODUTO_TIPO");
+
+                    b.ToTable("Produto", (string)null);
                 });
 
             modelBuilder.Entity("axxis.bacco.domain.Usuarios.Usuario", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Cpf")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(11)
+                        .HasColumnType("character varying(11)");
 
                     b.Property<DateTime>("DataNascimento")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("Endereco")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(150)
+                        .HasColumnType("character varying(150)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("Senha")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("Telefone")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(14)
+                        .HasColumnType("character varying(14)");
 
                     b.Property<int>("TipoUsuario")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_USUARIOS");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("Usuarios", (string)null);
                 });
 
             modelBuilder.Entity("axxis.bacco.domain.Vendas.Venda", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("ClienteCPF")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(11)
+                        .HasColumnType("character varying(11)");
 
                     b.Property<string>("ClienteEmail")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("ClienteNome")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("ClienteTelefone")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(14)
+                        .HasColumnType("character varying(14)");
 
                     b.Property<DateTime>("DataHora")
                         .HasColumnType("timestamp with time zone");
@@ -234,11 +278,12 @@ namespace axxis.bacco.backend.infra.data.Migrations
                     b.Property<long>("FormaPagamentoId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_VENDAS");
 
                     b.HasIndex("FormaPagamentoId");
 
-                    b.ToTable("Vendas");
+                    b.ToTable("Vendas", (string)null);
                 });
 
             modelBuilder.Entity("axxis.bacco.domain.Comandas.Comanda", b =>
@@ -246,8 +291,9 @@ namespace axxis.bacco.backend.infra.data.Migrations
                     b.HasOne("axxis.bacco.domain.Usuarios.Usuario", "Usuario")
                         .WithMany()
                         .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_COMANDA_USUARIO");
 
                     b.Navigation("Usuario");
                 });
@@ -255,31 +301,45 @@ namespace axxis.bacco.backend.infra.data.Migrations
             modelBuilder.Entity("axxis.bacco.domain.ItensVenda.ItemVenda", b =>
                 {
                     b.HasOne("axxis.bacco.domain.Vendas.Venda", "Venda")
-                        .WithMany("Itens")
+                        .WithMany()
                         .HasForeignKey("VendaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_ITENSVENDA_VENDA");
+
+                    b.HasOne("axxis.bacco.domain.Vendas.Venda", null)
+                        .WithMany("Itens")
+                        .HasForeignKey("VendaId1");
 
                     b.Navigation("Venda");
                 });
 
             modelBuilder.Entity("axxis.bacco.domain.Pedidos.Pedido", b =>
                 {
-                    b.HasOne("axxis.bacco.domain.Comandas.Comanda", "Comanda")
+                    b.HasOne("axxis.bacco.domain.Comandas.Comanda", null)
                         .WithMany("Pedidos")
                         .HasForeignKey("ComandaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_PEDIDO_COMANDA");
 
-                    b.HasOne("axxis.bacco.domain.Produtos.Produto", "Produto")
+                    b.HasOne("axxis.bacco.domain.Comandas.Comanda", "Comanda")
                         .WithMany()
-                        .HasForeignKey("ProdutoId")
+                        .HasForeignKey("ComandaId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Comanda");
+                });
 
-                    b.Navigation("Produto");
+            modelBuilder.Entity("axxis.bacco.domain.Produtos.Produto", b =>
+                {
+                    b.HasOne("axxis.bacco.domain.Pedidos.Pedido", null)
+                        .WithOne("Produto")
+                        .HasForeignKey("axxis.bacco.domain.Produtos.Produto", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_PEDIDO_PRODUTO");
                 });
 
             modelBuilder.Entity("axxis.bacco.domain.Vendas.Venda", b =>
@@ -287,8 +347,9 @@ namespace axxis.bacco.backend.infra.data.Migrations
                     b.HasOne("axxis.bacco.domain.FormasPagamento.FormaPagamento", "FormaPagamento")
                         .WithMany()
                         .HasForeignKey("FormaPagamentoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_VENDA_PAGAMENTO");
 
                     b.Navigation("FormaPagamento");
                 });
@@ -296,6 +357,12 @@ namespace axxis.bacco.backend.infra.data.Migrations
             modelBuilder.Entity("axxis.bacco.domain.Comandas.Comanda", b =>
                 {
                     b.Navigation("Pedidos");
+                });
+
+            modelBuilder.Entity("axxis.bacco.domain.Pedidos.Pedido", b =>
+                {
+                    b.Navigation("Produto")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("axxis.bacco.domain.Vendas.Venda", b =>

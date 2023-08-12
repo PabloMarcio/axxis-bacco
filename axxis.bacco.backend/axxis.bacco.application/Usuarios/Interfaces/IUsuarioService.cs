@@ -11,5 +11,6 @@ namespace axxis.bacco.application.Usuarios.Interfaces
     public interface IUsuarioService
     {
         Task<SignUpResponse> SignUp(SignUpRequest request);
+        RolesListResponse GetRolesList();
     }
 }

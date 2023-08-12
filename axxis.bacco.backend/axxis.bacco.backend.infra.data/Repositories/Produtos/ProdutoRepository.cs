@@ -20,12 +20,14 @@ namespace axxis.bacco.backend.infra.data.Repositories.Produtos
         {
             _context = context;
             _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            _context.ChangeTracker.LazyLoadingEnabled = false;
             _dbSet = context.Set<Produto>();
         }
 
         public void Add(Produto entity)
         {
             _dbSet.Add(entity);
+            _context.SaveChanges();
         }
 
         public IProdutoQuery CreateQuery()
@@ -36,6 +38,7 @@ namespace axxis.bacco.backend.infra.data.Repositories.Produtos
         public void Delete(Produto entity)
         {
             _dbSet.Remove(entity);
+            _context.SaveChanges();
         }
 
         public IQueryable<Produto> GetAll()
@@ -56,6 +59,7 @@ namespace axxis.bacco.backend.infra.data.Repositories.Produtos
         public void Update(Produto entity)
         {
             _dbSet.Update(entity);
+            _context.SaveChanges();
         }
     }
 }

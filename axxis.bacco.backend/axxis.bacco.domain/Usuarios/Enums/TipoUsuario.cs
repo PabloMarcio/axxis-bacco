@@ -3,9 +3,9 @@
     public enum TipoUsuario
     {
         Cliente,
-        AtendenteSalao,
-        AtendenteBalcao,
-        AtendenteCozinha,
+        Atendente,
+        Balcao,
+        Cozinha,
         Administrador
     }
 }

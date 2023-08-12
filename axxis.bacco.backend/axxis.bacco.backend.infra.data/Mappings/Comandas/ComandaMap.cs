@@ -19,7 +19,7 @@ namespace axxis.bacco.backend.infra.data.Mappings.Comandas
         {
             _modelBuilder.HasSequence<long>("Comandas_Id_seq");            
 
-            builder.ToTable("COMANDAS");
+            builder.ToTable("Comandas");
 
             builder.Property(c => c.Id)
                 .IsRequired()
@@ -40,7 +40,7 @@ namespace axxis.bacco.backend.infra.data.Mappings.Comandas
             builder.HasKey(c => c.Id).HasName("PK_COMANDAS");
             builder.HasIndex(c => c.Mesa).HasDatabaseName("IDX_COMANDA_MESA");
             builder.HasIndex(c => c.Status).HasDatabaseName("IDX_COMANDA_STATUS");
-            builder.HasIndex(c => c.DataAbertura).HasDatabaseName("IDX_COMANDA_STATUS");
+            builder.HasIndex(c => c.DataAbertura).HasDatabaseName("IDX_COMANDA_DATAABERTURA");
 
             _modelBuilder.Entity<Comanda>()
                 .HasOne<Usuario>("Usuario")

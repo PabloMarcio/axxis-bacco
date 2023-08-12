@@ -27,7 +27,7 @@ namespace axxis.bacco.backend.infra.data.Repositories.Usuarios
         public void Add(Usuario entity)
         {
             _dbSet.Add(entity);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public IUsuarioQuery CreateQuery()
@@ -38,6 +38,7 @@ namespace axxis.bacco.backend.infra.data.Repositories.Usuarios
         public void Delete(Usuario entity)
         {
             _dbSet.Remove(entity);
+            _context.SaveChanges();
         }
 
         public IQueryable<Usuario> GetAll()
@@ -58,6 +59,7 @@ namespace axxis.bacco.backend.infra.data.Repositories.Usuarios
         public void Update(Usuario entity)
         {
             _dbSet.Update(entity);
+            _context.SaveChanges();
         }
     }
 }

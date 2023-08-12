@@ -20,12 +20,14 @@ namespace axxis.bacco.backend.infra.data.Repositories.Vendas
         {
             _context = context;
             _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            _context.ChangeTracker.LazyLoadingEnabled = false;
             _dbSet = context.Set<Venda>();
         }
 
         public void Add(Venda entity)
         {
             _dbSet.Add(entity);
+            _context.SaveChanges();
         }
 
         public IVendaQuery CreateQuery()
@@ -36,6 +38,7 @@ namespace axxis.bacco.backend.infra.data.Repositories.Vendas
         public void Delete(Venda entity)
         {
             _dbSet.Remove(entity);
+            _context.SaveChanges();
         }
 
         public IQueryable<Venda> GetAll()
@@ -56,6 +59,7 @@ namespace axxis.bacco.backend.infra.data.Repositories.Vendas
         public void Update(Venda entity)
         {
             _dbSet.Update(entity);
+            _context.SaveChanges();
         }
     }
 }

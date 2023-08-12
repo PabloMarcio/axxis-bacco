@@ -20,7 +20,7 @@ namespace axxis.bacco.backend.infra.data.Mappings.Produtos
         {
             _modelBuilder.HasSequence<long>("Produtos_Id_seq");
 
-            builder.ToTable("PRODUTO");            
+            builder.ToTable("Produto");            
 
             builder.Property(c => c.Id)
                 .IsRequired()

@@ -30,5 +30,14 @@ namespace axxis.bacco.api.Controllers.Usuarios
             var signupResult = await _usuarioService.SignUp(request);
             return Ok(signupResult);
         }
+
+        [HttpPost]
+        [Route("getroles")]
+        [AllowAnonymous]
+        public async Task<ActionResult> GetRoles()
+        {
+            var result = _usuarioService.GetRolesList();
+            return Ok(result);
+        }
     }
 }

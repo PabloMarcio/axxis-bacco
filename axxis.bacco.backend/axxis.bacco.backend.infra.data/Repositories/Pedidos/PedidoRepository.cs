@@ -20,12 +20,14 @@ namespace axxis.bacco.backend.infra.data.Repositories.Pedidos
         {
             _context = context;
             _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            _context.ChangeTracker.LazyLoadingEnabled = false;
             _dbSet = context.Set<Pedido>();
         }
 
         public void Add(Pedido entity)
         {
             _dbSet.Add(entity);
+            _context.SaveChanges();
         }
 
         public IPedidoQuery CreateQuery()
@@ -36,6 +38,7 @@ namespace axxis.bacco.backend.infra.data.Repositories.Pedidos
         public void Delete(Pedido entity)
         {
             _dbSet.Remove(entity);
+            _context.SaveChanges();
         }
 
         public IQueryable<Pedido> GetAll()
@@ -56,6 +59,7 @@ namespace axxis.bacco.backend.infra.data.Repositories.Pedidos
         public void Update(Pedido entity)
         {
             _dbSet.Update(entity);
+            _context.SaveChanges();
         }
     }
 }

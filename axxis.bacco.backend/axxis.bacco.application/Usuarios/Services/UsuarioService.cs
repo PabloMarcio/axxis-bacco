@@ -17,6 +17,23 @@ namespace axxis.bacco.application.Usuarios.Services
             _usuarioRepository = usuarioRepository;
         }
 
+        public RolesListResponse GetRolesList()
+        {
+            var tiposUsuario = (TipoUsuario[])Enum.GetValues(typeof(TipoUsuario));
+            var result = new RolesListResponse();
+            foreach (var tipo in tiposUsuario)
+            {
+                var role = new Role
+                {
+                    Name = tipo.ToString(),
+                    Id = (int)tipo
+                };
+
+                result.Roles.Add(role);
+            }
+            return result;
+        }
+
         public async Task<SignUpResponse> SignUp(SignUpRequest request)
         {
             if (request.Email.IsNotValidEmail()) 

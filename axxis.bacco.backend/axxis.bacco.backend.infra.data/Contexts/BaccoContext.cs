@@ -14,6 +14,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using axxis.bacco.backend.infra.data.Mappings.Usuarios;
+using axxis.bacco.backend.infra.data.Mappings.Vendas;
+using axxis.bacco.backend.infra.data.Mappings.Produtos;
+using axxis.bacco.backend.infra.data.Mappings.Pedidos;
+using axxis.bacco.backend.infra.data.Mappings.ItensVenda;
+using axxis.bacco.backend.infra.data.Mappings.FormasPagamento;
+using axxis.bacco.backend.infra.data.Mappings.Comandas;
 
 namespace axxis.bacco.backend.infra.data.Contexts
 {
@@ -27,10 +34,30 @@ namespace axxis.bacco.backend.infra.data.Contexts
         public DbSet<ItemVenda> ItensVenda { get; set; }
         public DbSet<FormaPagamento> FormasPagamento { get; set; }
 
+        public BaccoContext()
+        {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {            
             optionsBuilder.UseNpgsql("User ID=postgres;Password=4xx15;Host=localhost;Port=5432;Database=bacco;Pooling=true;Connection Lifetime=0;SearchPath=public;");
             base.OnConfiguring(optionsBuilder);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+            modelBuilder.ApplyConfiguration(new UsuarioMap(modelBuilder));
+            modelBuilder.ApplyConfiguration(new VendaMap(modelBuilder));
+            modelBuilder.ApplyConfiguration(new ProdutoMap(modelBuilder));
+            modelBuilder.ApplyConfiguration(new PedidoMap(modelBuilder));
+            modelBuilder.ApplyConfiguration(new ItemVendaMap(modelBuilder));
+            modelBuilder.ApplyConfiguration(new FormaPagamentoMap(modelBuilder));
+            modelBuilder.ApplyConfiguration(new ComandaMap(modelBuilder));
+
+
+            base.OnModelCreating(modelBuilder);
         }
 
         public long NextVal(string sequenceName)

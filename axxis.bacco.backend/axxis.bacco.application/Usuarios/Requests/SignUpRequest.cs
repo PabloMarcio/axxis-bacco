@@ -9,7 +9,7 @@ namespace axxis.bacco.application.Usuarios.Requests
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Informe o sua data de nascimento")]
-        public DateTime Birthday { get; set; }
+        public string Birthday { get; set; }
 
         [Required(ErrorMessage = "Informe o seu e-mail")]
         public string Email { get; set; }

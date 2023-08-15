@@ -41,7 +41,27 @@
     text-align: right;
   }
 
+  .vcenter {
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+  }
+
   .roundButtonWithMargin {
     border-radius: 100px;
     margin: 4px;
+  }
+
+  .customDatepicker {
+    font-size: 16px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    background-color: white; 
+    color: black; 
+  }
+  
+  /* Define o estilo do cabeçalho do DatePicker */
+  .react-datepicker__header {
+    background-color: #8b0000; /* Fundo vermelho grená */
+    color: white; /* Letras brancas */
   }

@@ -5,6 +5,7 @@ using axxis.bacco.backend.infra.extensions;
 using axxis.bacco.domain.Usuarios;
 using axxis.bacco.domain.Usuarios.Enums;
 using axxis.bacco.domain.Usuarios.Repositories;
+using System.Text;
 
 namespace axxis.bacco.application.Usuarios.Services
 {
@@ -36,26 +37,35 @@ namespace axxis.bacco.application.Usuarios.Services
 
         public async Task<SignUpResponse> SignUp(SignUpRequest request)
         {
+            var validationErrors = new StringBuilder();
             if (request.Email.IsNotValidEmail()) 
             {
-                return new SignUpResponse(false, "Endereço de e-mail inválido");
+                validationErrors.AppendLine("- Endereço de e-mail inválido;");
+            }
+            
+            if (DateTime.TryParse(request.Birthday, out DateTime birthday) == false)
+            {
+                validationErrors.AppendLine("- A data de nascimento informada é inválida;");
             }
             var usuario = (await _usuarioRepository.CreateQuery().FilterByEmail(request.Email).ToListASync()).FirstOrDefault();
             if (usuario != null)
             {
-                return new SignUpResponse(false, "Endereço de e-mail já está sendo utilizado");
+                validationErrors.AppendLine("- Endereço de e-mail já está sendo utilizado;");                
             }
             if (request.Password != request.PasswordConfirmation)
             {
-                return new SignUpResponse(false, "A confirmação de senha é diferente da senha informada");
+                validationErrors.AppendLine("- A confirmação de senha é diferente da senha informada;");
             }
-
+            if (validationErrors.Length > 0)
+            {
+                return new SignUpResponse(false, $"Ocorreram os seguintes erros: /r/n {validationErrors}");
+            }
             var novoUsuario = new Usuario
             {
                 Id = _usuarioRepository.NewId(),
                 TipoUsuario = TipoUsuario.Cliente,
                 Cpf = request.Cpf,
-                DataNascimento = request.Birthday,
+                DataNascimento = birthday,
                 Email = request.Email,
                 Endereco = request.Address,
                 Senha = request.Password.ToBase64().SHA256(),

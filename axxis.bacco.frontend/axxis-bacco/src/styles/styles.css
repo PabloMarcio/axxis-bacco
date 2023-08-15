@@ -1,3 +1,7 @@
+* {
+  font-smooth: always;
+}
+
 .App {
   text-align: center;
 }

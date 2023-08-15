@@ -68,7 +68,7 @@ namespace axxis.bacco.application.Login.Services
 
         private bool CheckForDefaultAdministratorLogin(AuthenticationRequest request)
         {
-            if ((request.Username.ToLower() != "admin") && (request.Password.ToLower() != "admin")) 
+            if ((request.Username.ToLower() != "admin") || (request.Password.ToLower() != "admin")) 
                 return false;
 
             // caso o sistema não tenha um usuário administrador valida o login com admin/admin. Caso tenha pelo menos um usuário cadastrado como administrador, este login perde a validade
